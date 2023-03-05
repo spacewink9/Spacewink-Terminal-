@@ -17,3 +17,11 @@ def listen():
         return text
     except:
         return None
+from utils.voice_text import speak, listen
+
+speak("Welcome to the Spacewink Terminal. How can I help you today?")
+text = listen()
+if text is not None:
+    print(f"User said: {text}")
+else:
+    print("Sorry, I didn't catch that. Can you please repeat?")
