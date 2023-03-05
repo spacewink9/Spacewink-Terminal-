@@ -38,3 +38,14 @@ def analyze_company_debt_to_equity_ratio(data):
         message = "The company has an unfavorable debt-to-equity ratio of {0:.2f}.".format(debt_to_equity_ratio)
 
     return message
+
+data = {
+    'date': ['2020-12-31', '2019-12-31'],
+    'total_debt': [1000000, 750000],
+    'shareholder_equity': [2000000, 1500000]
+}
+
+message = analyze_company_debt_to_equity_ratio(data)
+
+print(message)
+
