@@ -1,0 +1,49 @@
+from exchanges.exchange import Exchange
+
+class Bitstamp(Exchange):
+    def __init__(self, api_key, secret_key):
+        super().__init__(api_key, secret_key)
+        self.base_url = 'https://www.bitstamp.net/api/v2'
+
+    def get_balance(self):
+        endpoint = '/balance/'
+        return self._send_request(endpoint)
+
+    def get_ticker(self, symbol):
+        endpoint = f'/ticker/{symbol}/'
+        return self._send_request(endpoint)
+
+    def get_orderbook(self, symbol, limit=100):
+        endpoint = f'/order_book/{symbol}/'
+        params = {'limit': limit}
+        return self._send_request(endpoint, params=params)
+
+    def create_order(self, symbol, side, quantity, price, order_type='limit'):
+        endpoint = '/order/new/'
+        params = {
+            'symbol': symbol,
+            'side': side,
+            'type': order_type,
+            'amount': quantity,
+            'price': price
+        }
+        return self._send_request(endpoint, params=params)
+
+    def cancel_order(self, order_id):
+        endpoint = '/cancel_order/'
+        params = {'id': order_id}
+        return self._send_request(endpoint, params=params)
+
+    def get_order_status(self, order_id):
+        endpoint = '/order_status/'
+        params = {'id': order_id}
+        return self._send_request(endpoint, params=params)
+
+    def get_open_orders(self):
+        endpoint = '/open_orders/'
+        return self._send_request(endpoint)
+
+    def get_order_history(self):
+        endpoint = '/user_transactions/'
+        params = {'limit': 100, 'offset': 0}
+        return self._send_request(endpoint, params=params)
