@@ -1,39 +1,26 @@
-class AdvanceSettings:
-    def __init__(self, analysis_type, use_machine_learning, portfolio_optimization, risk_analysis):
-        self.analysis_type = analysis_type
-        self.use_machine_learning = use_machine_learning
-        self.portfolio_optimization = portfolio_optimization
-        self.risk_analysis = risk_analysis
+class AdvancedSettings:
+    def __init__(self):
+        self.enable_technical_indicators = True
+        self.enable_fundamental_analysis = False
+        self.enable_sentiment_analysis = False
+        self.enable_machine_learning = False
+        self.enable_portfolio_optimization = False
+        self.enable_risk_analysis = False
 
-    def get_analysis_type(self):
-        return self.analysis_type
+    def set_technical_indicators(self, value):
+        self.enable_technical_indicators = value
 
-    def set_analysis_type(self, analysis_type):
-        self.analysis_type = analysis_type
+    def set_fundamental_analysis(self, value):
+        self.enable_fundamental_analysis = value
 
-    def use_machine_learning(self):
-        return self.use_machine_learning
+    def set_sentiment_analysis(self, value):
+        self.enable_sentiment_analysis = value
 
-    def enable_machine_learning(self):
-        self.use_machine_learning = True
+    def set_machine_learning(self, value):
+        self.enable_machine_learning = value
 
-    def disable_machine_learning(self):
-        self.use_machine_learning = False
+    def set_portfolio_optimization(self, value):
+        self.enable_portfolio_optimization = value
 
-    def use_portfolio_optimization(self):
-        return self.portfolio_optimization
-
-    def enable_portfolio_optimization(self):
-        self.portfolio_optimization = True
-
-    def disable_portfolio_optimization(self):
-        self.portfolio_optimization = False
-
-    def use_risk_analysis(self):
-        return self.risk_analysis
-
-    def enable_risk_analysis(self):
-        self.risk_analysis = True
-
-    def disable_risk_analysis(self):
-        self.risk_analysis = False
+    def set_risk_analysis(self, value):
+        self.enable_risk_analysis = value
