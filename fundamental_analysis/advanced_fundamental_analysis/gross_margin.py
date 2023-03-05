@@ -19,3 +19,4 @@ def calculate_gross_margin(ticker: str, income_data: pd.DataFrame) -> float:
     gross_margin = gross_profit / total_revenue
     
     return gross_margin
+Gross Margin = Gross Profit / Total Revenue
