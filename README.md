@@ -4,7 +4,7 @@ SpaceWink is a project that allows users to explore the stars and planets throug
 Installation
 To install SpaceWink, simply clone this repository to your local machine:
 
-git clone https://github.com/username/SpaceWink.git
+git clone https://github.com/AnandDamdiyal/Spacewink-Terminal-.git
 Usage
 To use SpaceWink, run the main.py file:
 
