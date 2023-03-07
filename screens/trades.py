@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from termcolor import colored
+from termcolor  colored
 
 def show_trades_menu():
     os.system('clear')
@@ -76,3 +76,76 @@ def trades_main():
         else:
             print(colored('Invalid choice. Please try again.', 'red'))
             input('\nPress Enter to continue...')
+import pyttsx3
+import speech_recognition as sr
+import datetime
+import os
+import webbrowser
+import random
+
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
+
+def wishMe():
+    hour = int(datetime.datetime.now().hour)
+    if hour>=0 and hour<12:
+        speak("Good Morning!")
+
+    elif hour>=12 and hour<18:
+        speak("Good Afternoon!")   
+
+    else:
+        speak("Good Evening!")  
+
+    speak("How can I assist you with your trades?")
+
+def takeCommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+    try:
+        print("Recognizing...")
+        query = r.recognize_google(audio, language='en-in')
+        print(f"User said: {query}\n")
+
+    except Exception as e:
+        print(e)
+        print("Say that again please...")
+        return "None"
+    return query
+
+def analyze_stock(stock_name):
+    # perform analysis of the stock and return a recommendation
+    recommendation = random.choice(["Buy", "Hold", "Sell"])
+    return recommendation
+
+def open_trading_website():
+    # open a trading website
+    webbrowser.open('https://www.tradingwebsite.com')
+
+if __name__ == "__main__":
+    wishMe()
+    while True:
+        query = takeCommand().lower()
+
+        if 'analyze stock' in query:
+            speak("Which stock do you want to analyze?")
+            stock_name = takeCommand().lower()
+            recommendation = analyze_stock(stock_name)
+            speak(f"My recommendation for {stock_name} is to {recommendation}")
+        
+        elif 'open trading website' in query:
+            speak("Opening the trading website")
+            open_trading_website()
+
+        elif 'exit' in query:
+            speak("Goodbye!")
+            break
