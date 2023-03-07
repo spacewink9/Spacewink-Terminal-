@@ -118,3 +118,26 @@ def run_auto_ai_analysis(api_key: str) -> None:
     else:
         print("Sell")
 
+with open("prediction.txt", "w") as file:
+    file.write(str(prediction))
+
+# Display a message to the user
+print("Prediction saved to prediction.txt")
+
+# Display a visualization of the prediction
+plot_prediction(X_test, y_test, model)
+
+# Ask the user if they want to save the model
+save_model = input("Do you want to save the model? (y/n): ")
+if save_model.lower() == "y":
+    model.save("auto_ai_model.h5")
+    print("Model saved successfully!")
+else:
+    print("Model not saved.")
+
+# Ask the user if they want to run the analysis again
+run_again = input("Do you want to run the analysis again? (y/n): ")
+if run_again.lower() == "y":
+    auto_ai_analysis()
+else:
+    print("Exiting auto AI analysis screen.")
