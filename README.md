@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Spacewink Terminal</h1>
-    <p>The Spacewink Terminal is a command-line tool designed to provide advanced financial analysis and data visualization for traders and investors.</p>
+    <p>The Spacewink Terminal is a (Under Developed )command-line tool designed to provide advanced financial analysis and data visualization for traders and investors.</p>
  
 <h2>Features</h2>
 <ul>
